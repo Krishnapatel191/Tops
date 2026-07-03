@@ -9,7 +9,7 @@ int main ()
 
     int marks=45;
     if(marks>=35){
-        print("\npass");
+        printf("\npass");
     }
     return 0;
 }
