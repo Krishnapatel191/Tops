@@ -1,0 +1,130 @@
+TASKS
+1. Install GCC on your computer and verify the installation by running gcc --version in your terminal or command prompt.
+Ans.
+To install GCC (GNU Compiler Collection) and verify it, follow these steps:
+
+For Windows:
+
+Step 1: Download and Install GCC
+1. Download MinGW-w64 GCC compiler from the official website:
+MinGW-w64 GCC Compiler
+2. Install MinGW-w64.
+3. During installation, note the folder path where GCC is installed (example: C:\mingw64\bin).
+
+Step 2: Add GCC to Environment Path
+1. Open Control Panel → System → Advanced System Settings.
+2. Click Environment Variables.
+3. Under System Variables, select Path → Edit.
+4. Click New and add the GCC bin folder path.
+   Example:
+   C:\mingw64\bin
+5. Click OK and restart the terminal.
+
+Step 3: Verify GCC Installation
+1. Open Command Prompt or VS Code Terminal.
+2. Type:
+   gcc --version
+3. If installation is successful, you will see output like:
+   gcc (MinGW-W64) 13.2.0
+   Copyright (C) Free Software Foundation, Inc.
+
+Conclusion:
+The GCC compiler is successfully installed and verified using the gcc --version command. Now you can compile and run C programs on your computer.
+
+
+
+
+2. Open VS Code or DevC++ and create a new file named hello.c. Write a C program that prints 'Hello, Instagram World!' to the console.
+Ans.
+Steps to Create and Run hello.c Program
+
+Step 1: Open VS Code or Dev-C++
+
+1. Open VS Code (or Dev-C++).
+2. Create a new file.
+3. Save the file with the name:
+   hello.c
+
+Step 2: Write the C Program
+
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello, Instagram World!");
+
+    return 0;
+}
+
+Step 3: Compile and Run the Program
+Open the terminal in VS Code and run:
+
+Compile:
+gcc hello.c
+
+Run:
+./a.exe
+
+Output:
+Hello, Instagram World!
+
+Result:
+The C program was successfully created and executed, and it displayed "Hello, Instagram World!" on the console.
+
+
+
+
+3. Identify and label the header, main function, and return statement in your hello.c program using comments.
+Ans.
+hello.c Program with Comments Identifying Header, Main Function, and Return Statement
+
+// Header file section
+#include <stdio.h>
+
+int main()   // Main function starts here
+{
+    printf("Hello, Instagram World!");
+
+    return 0;   // Return statement
+}
+
+Explanation:
+Header: #include <stdio.h>
+→ It includes the standard input/output library required for using printf().
+
+Main Function: int main()
+→ It is the starting point of every C program. Program execution begins from the main function.
+
+Return Statement: return 0;
+→ It indicates that the program has executed successfully and returns control to the operating system.
+
+
+
+
+4. Compile your hello.c file using the GCC command line (gcc hello.c -o hello) and run the output file to display the message in your terminal.<br><br><em><strong>Hint:</strong> On Windows, the output file will be hello.exe; on Linux/Mac, it will be hello.</em>
+Ans.
+Steps to Compile and Run hello.c Using GCC
+
+Step 1: Open Terminal / Command Prompt
+Open VS Code Terminal, Command Prompt, or Terminal.
+
+Step 2: Compile the C Program
+Use the GCC command:
+  gcc hello.c
+This command compiles the hello.c file and creates an executable output file.
+
+Step 3: Run the Output File
+On Windows:
+./hello.exe
+
+Output:
+Hello, Instagram World!
+
+Result:
+The hello.c program was successfully compiled using GCC and executed. The message "Hello, Instagram World!" was displayed in the terminal.
+
+
+
+
+
+

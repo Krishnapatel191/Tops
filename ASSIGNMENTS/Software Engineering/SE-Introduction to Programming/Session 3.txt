@@ -1,0 +1,103 @@
+TASKS
+1. Declare variables for a Flipkart product: productName (as a string), price (float), and rating (double). Assign sample values and print each variable with its data type.
+Ans.
+C Program: Flipkart Product Details Using Variables
+
+#include <stdio.h>
+
+int main()
+{
+    // Declare variables
+    char productName[] = "Smartphone";  // String data type
+    float price = 15999.99;             // Float data type
+    double rating = 4.5;                // Double data type
+
+    // Print variables with their data types
+    printf("Product Name: %s (String)\n", productName);
+    printf("Price: %.2f (Float)\n", price);
+    printf("Rating: %.1lf (Double)\n", rating);
+
+    return 0;
+}
+
+Output:
+Product Name: Smartphone (String)
+Price: 15999.99 (Float)
+Rating: 4.5 (Double)
+
+Explanation:
+productName → Stores the product name using a string (char array).
+price → Stores the product price using float.
+rating → Stores the product rating using double.
+printf() is used to display the values along with their data types.
+
+
+
+
+2. Create a constant variable to store the GST rate (for example, 18%) and use it to calculate the final price of a Zomato order with a given base price.<br><br><em><strong>Constraint:</strong> The GST rate must not be changeable after its initial assignment.</em>
+Ans.
+C Program: Calculate Final Zomato Order Price Using Constant GST Rate
+
+#include <stdio.h>
+
+int main()
+{
+    // Constant variable for GST rate
+    const float GST_RATE = 18.0;
+
+    float basePrice = 500.0;
+    float gstAmount;
+    float finalPrice;
+
+    // Calculate GST amount
+    gstAmount = (basePrice * GST_RATE) / 100;
+
+    // Calculate final price
+    finalPrice = basePrice + gstAmount;
+
+    // Display results
+    printf("Base Price: %.2f\n", basePrice);
+    printf("GST Rate: %.2f%%\n", GST_RATE);
+    printf("GST Amount: %.2f\n", gstAmount);
+    printf("Final Zomato Order Price: %.2f\n", finalPrice);
+
+    return 0;
+}
+
+Output:
+Base Price: 500.00
+GST Rate: 18.00%
+GST Amount: 90.00
+Final Zomato Order Price: 590.00
+
+
+
+
+3. Write a program that stores your favorite Spotify playlist's name (string), total number of songs (int), and average song duration in minutes (float). Print all values in a single formatted sentence.
+Ans.
+Store Spotify Playlist Details and Print in a Formatted Sentence
+
+#include <stdio.h>
+
+int main()
+{
+    // Declare and initialize variables
+    char playlistName[] = "My Favorite Hits";  // String
+    int totalSongs = 50;                       // Integer
+    float avgDuration = 3.5;                   // Float (minutes)
+
+    // Print all values in a single formatted sentence
+    printf("My favorite Spotify playlist is '%s' with %d songs and the average song duration is %.1f minutes.",
+           playlistName, totalSongs, avgDuration);
+
+    return 0;
+}
+
+Output:
+My favorite Spotify playlist is 'My Favorite Hits' with 50 songs and the average song duration is 3.5 minutes.
+
+
+
+
+4. Identify and correct the invalid variable names from this list: 1stPlayer, player_age, $score, total-marks, userName.<br><br><em><strong>Hint:</strong> Apply standard variable naming rules for your programming language.</em>
+Ans.

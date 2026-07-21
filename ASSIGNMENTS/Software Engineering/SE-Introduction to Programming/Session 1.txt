@@ -1,0 +1,94 @@
+TASKS
+1. Write a short paragraph in your own words defining what a 'program' is and give one real-life example from any app you use daily (like Instagram, Zomato, or Paytm).
+Ans.
+Program:
+A program is a set of instructions written by a programmer that tells a computer or device what tasks to perform. It helps the computer process data, make decisions, and give the required output. Programs are created using programming languages like C, C++, Java, Python, etc.
+
+Real-life example:
+A daily-use example of a program is the Paytm app. When we use Paytm to send money, the program checks our account details, verifies the transaction, transfers the amount securely, and shows the payment status. All these activities are performed by the instructions written inside the Paytm application.
+
+
+
+
+2. List three popular programming languages you have heard of, and for each, mention whether it is usually compiled, interpreted, or can be both.<br><br><em><strong>Hint:</strong> Think of languages like Java, Python, and JavaScript.</em>
+Ans.
+Three popular programming languages and their types are:
+
+Java – Usually compiled.
+Java code is compiled into bytecode using the Java compiler, which runs on the Java Virtual Machine (JVM).
+
+Python – Usually interpreted.
+Python code is executed line by line by the Python interpreter.
+
+JavaScript – Can be both compiled and interpreted.
+JavaScript is traditionally interpreted, but modern browsers use Just-In-Time (JIT) compilers to improve performance.
+
+
+
+
+3. Draw a flowchart (on paper or using any online tool) for the process of booking a movie ticket on BookMyShow, starting from opening the app to receiving the booking confirmation.
+Ans.
+Flowchart for Booking a Movie Ticket on BookMyShow:
+          Start
+            |
+            ↓
+     Open BookMyShow App
+            |
+            ↓
+     Login / Create Account
+            |
+            ↓
+     Select City Location
+            |
+            ↓
+     Choose Movie
+            |
+            ↓
+     Select Cinema & Show Time
+            |
+            ↓
+     Select Seats
+            |
+            ↓
+     Confirm Ticket Details
+            |
+            ↓
+     Make Payment
+            |
+            ↓
+   Payment Successful?
+        /        \
+      No          Yes
+      |            |
+      ↓            ↓
+ Try Payment   Booking Confirmed
+ Again              |
+      |             ↓
+      └────→ Receive Booking
+             Confirmation
+                    |
+                    ↓
+                  End
+This flowchart shows the complete process from opening the app to receiving the movie ticket confirmation.
+
+
+
+
+4. Write down the steps (as an algorithm, using simple numbered instructions) for ordering food on Swiggy — from opening the app to completing payment.
+Ans.
+Algorithm: Ordering Food on Swiggy
+1. Start
+2. Open the Swiggy app on the mobile phone.
+3. Login or create a new account.
+4. Allow location access or enter the delivery address.
+5. Search for a restaurant or choose a restaurant from the list.
+6. Select the food items you want to order.
+7. Add selected items to the cart.
+8. Check the order details and update the quantity if required.
+9. Click on Proceed to Checkout.
+10. Confirm the delivery address and contact details.
+11. Select a payment method (UPI, card, cash on delivery, etc.).
+12. Make the payment.
+13. Wait for the payment confirmation.
+14. Order is placed successfully and you receive the order confirmation.
+15. End.
