@@ -1,0 +1,171 @@
+TASKS
+Q-1 Create a file called playlist.txt and write the names of your top 3 favorite songs from Spotify into it using write mode (w).
+Ans.
+#include <stdio.h>
+
+int main()
+{
+    FILE *file;
+
+    file = fopen("playlist.txt", "w");   // Write mode
+
+    if (file == NULL)
+    {
+        printf("File cannot be created");
+        return 1;
+    }
+
+    fprintf(file, "1. Shape of You\n");
+    fprintf(file, "2. Believer\n");
+    fprintf(file, "3. Perfect\n");
+
+    fclose(file);
+
+    printf("Playlist created successfully!");
+
+    return 0;
+}
+
+Output:
+Playlist created successfully!
+
+Data in playlist.txt file:
+1. Shape of You
+2. Believer
+3. Perfect
+
+
+
+
+
+Q-2 Open playlist.txt in read mode (r) and display each song name on a separate line in the console.
+Ans.
+#include <stdio.h>
+
+int main()
+{
+    FILE *file;
+    char ch;
+
+    file = fopen("playlist.txt", "r");   // Read mode
+
+    if (file == NULL)
+    {
+        printf("File cannot be opened");
+        return 1;
+    }
+
+    while ((ch = fgetc(file)) != EOF)
+    {
+        printf("%c", ch);
+    }
+
+    fclose(file);
+
+    return 0;
+}
+
+Output:
+1. Shape of You
+2. Believer
+3. Perfect
+
+
+
+
+
+Q-3 Add two more song names to playlist.txt without deleting the existing ones by opening the file in append mode (a).
+Ans.
+#include <stdio.h>
+
+int main()
+{
+    FILE *file;
+
+    file = fopen("playlist.txt", "a");   // Append mode
+
+    if (file == NULL)
+    {
+        printf("File cannot be opened");
+        return 1;
+    }
+
+    fprintf(file, "4. Love Story\n");
+    fprintf(file, "5. Counting Stars\n");
+
+    fclose(file);
+
+    printf("Songs added successfully!");
+
+    return 0;
+}
+
+Output:
+Songs added successfully!
+
+Updated playlist.txt file:
+1. Shape of You
+2. Believer
+3. Perfect
+4. Love Story
+5. Counting Stars
+
+
+
+
+
+
+Q-4 Write a program that reads all song names from playlist.txt and prints only those that contain the word 'love' (case-insensitive).<br><br><em><strong>Hint:</strong> Use the 'in' keyword or equivalent string method for filtering.</em>
+Ans.
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main()
+{
+    FILE *file;
+    char song[100];
+    char temp[100];
+
+    file = fopen("playlist.txt", "r");   // Read mode
+
+    if (file == NULL)
+    {
+        printf("File cannot be opened");
+        return 1;
+    }
+
+    printf("Songs containing 'love':\n");
+
+    while (fgets(song, sizeof(song), file))
+    {
+        strcpy(temp, song);
+
+        // Convert string to lowercase
+        for (int i = 0; temp[i] != '\0'; i++)
+        {
+            temp[i] = tolower(temp[i]);
+        }
+
+        // Check for word "love"
+        if (strstr(temp, "love") != NULL)
+        {
+            printf("%s", song);
+        }
+    }
+
+    fclose(file);
+
+    return 0;
+}
+
+playlist.txt Example:
+1. Shape of You
+2. Believer
+3. Perfect
+4. Love Story
+5. Counting Stars
+
+Output:
+Songs containing 'love':
+4. Love Story
