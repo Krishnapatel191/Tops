@@ -1,0 +1,170 @@
+TASKS
+1. Create a simple JavaScript function called calculateTotal that takes two numbers: itemPrice and quantity, and returns the total bill amount using arithmetic operators.
+Ans.
+// Function to calculate the total bill amount
+function calculateTotal(itemPrice, quantity) {
+    return itemPrice * quantity;
+}
+
+// Example
+let total = calculateTotal(100, 5);
+console.log("Total Bill Amount: " + total);
+
+Output:
+Total Bill Amount: 500
+
+
+
+
+2. Build a Flipkart-style discount calculator: given product price, discount percentage, and a boolean isMember, use arithmetic and logical operators to calculate the final price (apply an extra 5% off if isMember is true).
+Ans.
+Flipkart-style Discount Calculator
+#include <stdio.h>
+
+int main()
+{
+    float productPrice, discount, finalPrice;
+    int isMember;   // 1 = Yes, 0 = No
+
+    printf("Enter Product Price: ");
+    scanf("%f", &productPrice);
+
+    printf("Enter Discount Percentage: ");
+    scanf("%f", &discount);
+
+    printf("Are you a Member? (1 = Yes, 0 = No): ");
+    scanf("%d", &isMember);
+
+    // Apply normal discount
+    finalPrice = productPrice - (productPrice * discount / 100);
+
+    // Apply extra 5% discount if member
+    if (isMember == 1)
+    {
+        finalPrice = finalPrice - (finalPrice * 5 / 100);
+    }
+
+    printf("\nFinal Price = %.2f", finalPrice);
+
+    return 0;
+}
+
+Output:
+Enter Product Price: 2000
+Enter Discount Percentage: 20
+Are you a Member? (1 = Yes, 0 = No): 1
+
+Final Price = 1520.00
+
+
+
+
+3. Write a function isEligibleForOffer that takes a user's age and total order value, and returns true if the user is 18 or older AND the order value is above 500, otherwise false.<br><br><em><strong>Hint:</strong> Use relational and logical operators together.</em>
+Ans.
+#include <stdio.h>
+#include <stdbool.h>
+
+// Function to check offer eligibility
+bool isEligibleForOffer(int age, float orderValue)
+{
+    return (age >= 18 && orderValue > 500);
+}
+
+int main()
+{
+    int age;
+    float orderValue;
+
+    printf("Enter Age: ");
+    scanf("%d", &age);
+
+    printf("Enter Total Order Value: ");
+    scanf("%f", &orderValue);
+
+    if (isEligibleForOffer(age, orderValue))
+        printf("true");
+    else
+        printf("false");
+
+    return 0;
+}
+
+Output:
+Enter Age: 20
+Enter Total Order Value: 700
+true
+
+
+
+
+4. Given three variables: likes, comments, and shares (all numbers), write code to check if a post is 'trending' on Instagram (at least 1000 likes OR more than 200 comments AND at least 50 shares). Print the result.
+Ans.
+#include <stdio.h>
+
+int main()
+{
+    int likes, comments, shares;
+
+    printf("Enter Likes: ");
+    scanf("%d", &likes);
+
+    printf("Enter Comments: ");
+    scanf("%d", &comments);
+
+    printf("Enter Shares: ");
+    scanf("%d", &shares);
+
+    if (likes >= 1000 || (comments > 200 && shares >= 50))
+        printf("Post is Trending");
+    else
+        printf("Post is Not Trending");
+
+    return 0;
+}
+
+Output:
+Enter Likes: 800
+Enter Comments: 250
+Enter Shares: 60
+
+Post is Trending
+
+
+
+
+5. Write a code snippet that demonstrates the difference between pre-increment (++count) and post-increment (count++) by logging the values before and after using both on a followerCount variable.
+Ans.
+#include <stdio.h>
+
+int main()
+{
+    int followerCount = 100;
+
+    // Pre-increment
+    printf("Initial followerCount = %d\n", followerCount);
+    printf("Pre-increment (++followerCount) = %d\n", ++followerCount);
+    printf("After Pre-increment = %d\n\n", followerCount);
+
+    // Reset value
+    followerCount = 100;
+
+    // Post-increment
+    printf("Initial followerCount = %d\n", followerCount);
+    printf("Post-increment (followerCount++) = %d\n", followerCount++);
+    printf("After Post-increment = %d\n", followerCount);
+
+    return 0;
+}
+
+Output:
+Initial followerCount = 100
+Pre-increment (++followerCount) = 101
+After Pre-increment = 101
+
+Initial followerCount = 100
+Post-increment (followerCount++) = 100
+After Post-increment = 101
+
+
+
+
