@@ -1,0 +1,174 @@
+TASKS
+Q-1 Declare an integer variable called likes and a pointer variable called ptrLikes; assign likes a value, point ptrLikes to likes, and print both the value and the address stored in ptrLikes.
+Ans:
+#include <stdio.h>
+
+int main() {
+    int likes = 500;      // Declare and assign value
+    int *ptrLikes;        // Declare pointer variable
+
+    // Store address of likes in pointer
+    ptrLikes = &likes;
+
+    // Print value and address
+    printf("Likes value: %d\n", likes);
+    printf("Value using pointer: %d\n", *ptrLikes);
+    printf("Address stored in ptrLikes: %p", ptrLikes);
+
+    return 0;
+}
+
+Output:
+Likes value: 500
+Value using pointer: 500
+Address stored in ptrLikes: 0x7ffd23ab45
+
+
+
+
+
+Q-2 Write a function swapPlaylistCounts(int *a, int *b) that swaps the number of songs in two Spotify playlists using pointers, then call the function in main and print the swapped values.
+Ans.
+#include <stdio.h>
+
+// Function to swap playlist counts using pointers
+void swapPlaylistCounts(int *a, int *b) {
+    int temp;
+
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int playlist1Songs = 120;
+    int playlist2Songs = 250;
+
+    printf("Before Swapping:\n");
+    printf("Playlist 1 Songs: %d\n", playlist1Songs);
+    printf("Playlist 2 Songs: %d\n", playlist2Songs);
+
+    // Calling function and passing addresses
+    swapPlaylistCounts(&playlist1Songs, &playlist2Songs);
+
+    printf("\nAfter Swapping:\n");
+    printf("Playlist 1 Songs: %d\n", playlist1Songs);
+    printf("Playlist 2 Songs: %d\n", playlist2Songs);
+
+    return 0;
+}
+
+Output:
+Before Swapping:
+Playlist 1 Songs: 120
+Playlist 2 Songs: 250
+
+After Swapping:
+Playlist 1 Songs: 250
+Playlist 2 Songs: 120
+
+
+
+
+
+Q-3 #include <stdio.h>
+
+int main() {
+    int orders[5] = {250, 180, 320, 150, 400};
+
+    int *ptr = orders;  // Pointer points to first element of array
+
+    printf("Zomato Order Amounts:\n");
+
+    // Iterate through array using pointer arithmetic
+    for (int i = 0; i < 5; i++) {
+        printf("Order %d Amount: %d, Address: %p\n",
+               i + 1, *(ptr + i), (ptr + i));
+    }
+
+    return 0;
+}
+
+Output:
+Zomato Order Amounts:
+Order 1 Amount: 250, Address: 0x7ffd1234
+Order 2 Amount: 180, Address: 0x7ffd1238
+Order 3 Amount: 320, Address: 0x7ffd123c
+Order 4 Amount: 150, Address: 0x7ffd1240
+Order 5 Amount: 400, Address: 0x7ffd1244
+
+
+
+
+
+Q-4 Create a function incrementFollowers(int *followers, int n) that increases each follower count in an array (representing Instagram followers for 5 friends) by 100 using pointer arithmetic, then print the updated counts.
+Ans.
+#include <stdio.h>
+
+// Function to increment followers using pointer arithmetic
+void incrementFollowers(int *followers, int n) {
+    for (int i = 0; i < n; i++) {
+        *(followers + i) = *(followers + i) + 100;
+    }
+}
+
+int main() {
+    int followers[5] = {1200, 2500, 1800, 3200, 4000};
+
+    printf("Before Increment:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Friend %d: %d followers\n", i + 1, followers[i]);
+    }
+
+    // Calling function
+    incrementFollowers(followers, 5);
+
+    printf("\nAfter Increment:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Friend %d: %d followers\n", i + 1, followers[i]);
+    }
+
+    return 0;
+}
+
+Output:
+Before Increment:
+Friend 1: 1200 followers
+Friend 2: 2500 followers
+Friend 3: 1800 followers
+Friend 4: 3200 followers
+Friend 5: 4000 followers
+
+After Increment:
+Friend 1: 1300 followers
+Friend 2: 2600 followers
+Friend 3: 1900 followers
+Friend 4: 3300 followers
+Friend 5: 4100 followers
+
+
+
+
+
+Q-5 Draw a simple memory diagram (on paper or using any drawing tool) showing how a pointer references the address of a variable, using the variables from your likes and ptrLikes example; label the variable, pointer, and address.
+Ans.
+        Memory
+
++-----------------------+
+| Address: 1000         |
+| likes = 500           |
++-----------------------+
+          ▲
+          |
+          |  ptrLikes stores address 1000
+          |
++-----------------------+
+| Address: 2000         |
+| ptrLikes = 1000       |
++-----------------------+
+
+likes → It is a variable that stores the value 500.
+Address of likes → 1000 (this is just an example address).
+ptrLikes → It is a pointer variable.
+ptrLikes stores the value 1000, which is the address of likes. Therefore, it points to the likes variable.
+*ptrLikes gives the value stored at that address, which is 500.
