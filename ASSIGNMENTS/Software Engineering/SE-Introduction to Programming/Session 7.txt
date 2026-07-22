@@ -1,0 +1,182 @@
+TASKS
+Q:1 Use nested for loops to print a grid of emojis representing a 5x5 Instagram post feed, where each cell shows a 📷 symbol.
+Ans.
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    // Outer loop for rows
+    for (i = 1; i <= 5; i++) {
+
+        // Inner loop for columns
+        for (j = 1; j <= 5; j++) {
+            printf("📷 ");
+        }
+
+        // Move to the next line after each row
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Output:
+📷 📷 📷 📷 📷
+📷 📷 📷 📷 📷
+📷 📷 📷 📷 📷
+📷 📷 📷 📷 📷
+📷 📷 📷 📷 📷
+
+
+
+
+
+Q-2 Build a right-angled triangle pattern using nested loops, where each row displays increasing numbers starting from 1, similar to how a leaderboard on a gaming app shows rank numbers.
+Ans.
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    // Outer loop for rows
+    for (i = 1; i <= 5; i++) {
+
+        // Inner loop for printing numbers
+        for (j = 1; j <= i; j++) {
+            printf("%d ", j);
+        }
+
+        // Move to the next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Output:
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+
+
+
+
+
+Q-3 Create a pattern that prints a pyramid of stars (*) with 6 rows, centered like the loading animation you see on BookMyShow when a page is loading.<br><br><em><strong>Hint:</strong> Use spaces to align the stars in the center for each row.</em>
+Ans.
+#include <stdio.h>
+
+int main() {
+    int i, j, space;
+
+    // Outer loop for rows
+    for (i = 1; i <= 6; i++) {
+
+        // Print spaces before stars
+        for (space = 6; space > i; space--) {
+            printf(" ");
+        }
+
+        // Print stars
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+
+        // Move to next row
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Output:
+     *
+    ***
+   *****
+  *******
+ *********
+***********
+
+
+
+
+
+Q-4: Write code using nested loops to print a pattern of alternating 0s and 1s in a grid, like the checkered background seen in some Spotify playlist covers (e.g., for a 4x4 grid, alternate 0 and 1 in each cell).
+Ans.
+#include <stdio.h>
+
+int main() {
+    int i, j;
+
+    // Outer loop for rows
+    for (i = 0; i < 4; i++) {
+
+        // Inner loop for columns
+        for (j = 0; j < 4; j++) {
+
+            // Check position and print 0 or 1
+            if ((i + j) % 2 == 0)
+                printf("0 ");
+            else
+                printf("1 ");
+        }
+
+        // Move to next row
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Output:
+0 1 0 1
+1 0 1 0
+0 1 0 1
+1 0 1 0
+
+
+
+
+
+Q-5: Modify your pyramid pattern code to accept the number of rows as user input, so the user can set the height of the pyramid before printing.
+Ans.
+#include <stdio.h>
+
+int main() {
+    int i, j, space, rows;
+
+    // Take number of rows from user
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    // Outer loop for rows
+    for (i = 1; i <= rows; i++) {
+
+        // Print spaces before stars
+        for (space = rows; space > i; space--) {
+            printf(" ");
+        }
+
+        // Print stars
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+
+        // Move to next line
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Output:
+Enter number of rows: 5
+
+    *
+   ***
+  *****
+ *******
+*********
