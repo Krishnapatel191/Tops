@@ -1,0 +1,136 @@
+TASKS
+Q-1 Declare a 1D array called dailySteps with 7 elements to store your step count for each day of the week, assign sample values, and print each value using a loop.
+Ans.
+#include <stdio.h>
+
+int main() {
+    // 1D array to store steps for 7 days
+    int dailySteps[7] = {5000, 6500, 7000, 8000, 7500, 9000, 10000};
+
+    // Print step count using loop
+    printf("Daily Steps Count:\n");
+
+    for (int i = 0; i < 7; i++) {
+        printf("Day %d: %d steps\n", i + 1, dailySteps[i]);
+    }
+
+    return 0;
+}
+
+Output:
+Daily Steps Count:
+Day 1: 5000 steps
+Day 2: 6500 steps
+Day 3: 7000 steps
+Day 4: 8000 steps
+Day 5: 7500 steps
+Day 6: 9000 steps
+Day 7: 10000 steps
+
+
+
+
+
+Q-2 Create a 2D array called playlistRatings to store ratings for 3 Spotify playlists over 5 days (rows = playlists, columns = days). Fill it with sample numbers and print the ratings for the second playlist.
+Ans.
+#include <stdio.h>
+
+int main() {
+    // 2D array: 3 playlists × 5 days
+    int playlistRatings[3][5] = {
+        {5, 4, 5, 3, 4},   // Playlist 1
+        {4, 5, 3, 5, 4},   // Playlist 2
+        {3, 4, 4, 5, 5}    // Playlist 3
+    };
+
+    // Print ratings of second playlist
+    printf("Ratings of Second Playlist:\n");
+
+    for (int i = 0; i < 5; i++) {
+        printf("Day %d: %d stars\n", i + 1, playlistRatings[1][i]);
+    }
+
+    return 0;
+}
+
+Output:
+Ratings of Second Playlist:
+Day 1: 4 stars
+Day 2: 5 stars
+Day 3: 3 stars
+Day 4: 5 stars
+Day 5: 4 stars
+
+
+
+
+
+Q-3 Build a function that takes a 1D array of 7 integers representing your daily Zomato order amounts and calculates the average spend for the week.<br><br><em><strong>Hint:</strong> Use a loop to sum the values, then divide by the array length.</em>
+Ans.
+#include <stdio.h>
+
+// Function to calculate average spend
+float calculateAverageSpend(int orders[], int size) {
+    int sum = 0;
+
+    // Calculate total spend
+    for (int i = 0; i < size; i++) {
+        sum = sum + orders[i];
+    }
+
+    // Return average
+    return (float)sum / size;
+}
+
+int main() {
+    // 7 days Zomato order amounts
+    int dailyOrders[7] = {250, 180, 320, 150, 400, 275, 225};
+
+    float average;
+
+    // Calling function
+    average = calculateAverageSpend(dailyOrders, 7);
+
+    printf("Average Zomato Spend for the Week: ₹%.2f", average);
+
+    return 0;
+}
+
+Output:
+Average Zomato Spend for the Week: ₹257.14
+
+
+
+
+
+Q-4 Given a 2D array called cricketScores where each row represents an IPL match and columns represent runs scored by each team, write code to print the highest score from each match.
+#include <stdio.h>
+
+int main() {
+    // 3 IPL matches and 2 teams' scores
+    int cricketScores[3][2] = {
+        {185, 172},   // Match 1
+        {210, 198},   // Match 2
+        {156, 160}    // Match 3
+    };
+
+    int highest;
+
+    // Find highest score from each match
+    for (int i = 0; i < 3; i++) {
+
+        if (cricketScores[i][0] > cricketScores[i][1])
+            highest = cricketScores[i][0];
+        else
+            highest = cricketScores[i][1];
+
+        printf("Match %d Highest Score: %d runs\n", i + 1, highest);
+    }
+
+    return 0;
+}
+
+Output:
+Match 1 Highest Score: 185 runs
+Match 2 Highest Score: 210 runs
+Match 3 Highest Score: 160 runs
