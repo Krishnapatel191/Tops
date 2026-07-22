@@ -1,0 +1,198 @@
+TASKS
+1. Write a program that prints the numbers from 10 down to 1 using a for loop, similar to a countdown timer.
+Ans.
+#include <stdio.h>
+
+int main()
+{
+    int i;
+
+    for (i = 10; i >= 1; i--)
+    {
+        printf("%d\n", i);
+    }
+
+    return 0;
+}
+
+Output:
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+
+
+
+
+2. Create a menu-driven console app that lets the user: 1) View your favorite 3 IPL teams, 2) Add a new team, 3) Exit. Use a while loop to keep showing the menu until the user chooses Exit.<br><br><em><strong>Hint:</strong> Use input() (or Scanner in Java) to get the user's choice each time.</em>
+Ans.
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int choice;
+    char newTeam[50];
+
+    while (1)
+    {
+        printf("\n===== IPL Team Menu =====\n");
+        printf("1. View Favorite 3 IPL Teams\n");
+        printf("2. Add New Team\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1:
+                printf("\nFavorite IPL Teams:\n");
+                printf("1. Mumbai Indians\n");
+                printf("2. Chennai Super Kings\n");
+                printf("3. Royal Challengers Bangalore\n");
+                break;
+
+            case 2:
+                printf("Enter New Team Name: ");
+                scanf(" %[^\n]", newTeam);
+                printf("New Team Added: %s\n", newTeam);
+                break;
+
+            case 3:
+                printf("Exiting Program...\n");
+                return 0;
+
+            default:
+                printf("Invalid Choice! Please Try Again.\n");
+        }
+    }
+
+    return 0;
+}
+
+Output:
+===== IPL Team Menu =====
+1. View Favorite 3 IPL Teams
+2. Add New Team
+3. Exit
+Enter your choice: 1
+
+Favorite IPL Teams:
+1. Mumbai Indians
+2. Chennai Super Kings
+3. Royal Challengers Bangalore
+
+===== IPL Team Menu =====
+1. View Favorite 3 IPL Teams
+2. Add New Team
+3. Exit
+Enter your choice: 3
+
+Exiting Program...
+
+
+
+
+
+3. Build a 'Guess the Song' game like Spotify — the program randomly picks a song name from a list and asks the user to guess it. Use a do-while loop so the user can keep guessing until they get it right.<br><br><em><strong>Constraint:</strong> Use at least 3 song names of your choice.</em>
+Ans.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    char songs[3][30] = {"Believer", "Perfect", "Shape of You"};
+    char guess[30];
+
+    srand(time(0));
+    int random = rand() % 3;
+
+    printf("=== Guess the Song Game ===\n");
+
+    do
+    {
+        printf("Guess the Song: ");
+        scanf(" %[^\n]", guess);
+
+        if (strcmp(guess, songs[random]) == 0)
+        {
+            printf("Correct! You guessed the song.\n");
+        }
+        else
+        {
+            printf("Wrong Guess! Try Again.\n");
+        }
+
+    } while (strcmp(guess, songs[random]) != 0);
+
+    return 0;
+}
+
+Output:
+=== Guess the Song Game ===
+Guess the Song: Believer
+Wrong Guess! Try Again.
+Guess the Song: Perfect
+Correct! You guessed the song.
+
+
+
+
+
+4. Explain with your own example the difference between entry-controlled and exit-controlled loops by writing a short code snippet for each (for/while vs do-while) and describing what happens if the loop condition is false at the start.
+Ans.
+1. Entry-Controlled Loop (for / while)
+In an entry-controlled loop, the condition is checked before executing the loop body.
+If the condition is false at the beginning, the loop does not execute even once.
+
+#include <stdio.h>
+
+int main()
+{
+    int i = 5;
+
+    while (i < 5)
+    {
+        printf("%d\n", i);
+        i++;
+    }
+
+    return 0;
+}
+
+Output:
+No Output
+
+// i < 5 is false initially (5 < 5 is false), the loop body is skipped.
+
+2. Exit-Controlled Loop (do-while)
+In an exit-controlled loop, the condition is checked after executing the loop body.
+Even if the condition is false initially, the loop executes at least once.
+
+#include <stdio.h>
+
+int main()
+{
+    int i = 5;
+
+    do
+    {
+        printf("%d\n", i);
+        i++;
+    }
+    while (i < 5);
+
+    return 0;
+}
+
+Output:
+5
