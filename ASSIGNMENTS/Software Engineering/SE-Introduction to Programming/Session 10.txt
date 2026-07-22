@@ -1,0 +1,130 @@
+TASKS
+Q-1 Declare a string variable called songTitle and assign it the value 'Tum Hi Ho'. Print the length of the string using strlen().
+Ans.
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    // Declare string variable
+    char songTitle[] = "Tum Hi Ho";
+
+    // Find length using strlen()
+    int length = strlen(songTitle);
+
+    // Print result
+    printf("Song Title: %s\n", songTitle);
+    printf("Length of Song Title: %d", length);
+
+    return 0;
+}
+
+Output:
+Song Title: Tum Hi Ho
+Length of Song Title: 9
+
+
+
+
+
+Q-2 Take input for two usernames (as strings) and compare them using strcmp(). Display whether they are the same or different.
+Ans.
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char username1[50], username2[50];
+
+    // Take usernames from user
+    printf("Enter first username: ");
+    scanf("%s", username1);
+
+    printf("Enter second username: ");
+    scanf("%s", username2);
+
+    // Compare usernames using strcmp()
+    if (strcmp(username1, username2) == 0) {
+        printf("Both usernames are same.");
+    }
+    else {
+        printf("Usernames are different.");
+    }
+
+    return 0;
+}
+
+Output 1:
+Enter first username: Krishna
+Enter second username: Krishna
+
+Both usernames are same.
+
+Output 2:
+Enter first username: Krishna
+Enter second username: Patel
+
+Usernames are different.
+
+
+
+
+
+Q-3 Copy the string 'Flipkart' into another string variable called shoppingApp using strcpy(), then print the value of shoppingApp.<br><br><em><strong>Hint:</strong> Make sure to declare enough space for the destination string.</em>
+Ans.
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char shoppingApp[20];
+
+    // Copy string using strcpy()
+    strcpy(shoppingApp, "Flipkart");
+
+    // Print copied string
+    printf("Shopping App: %s", shoppingApp);
+
+    return 0;
+}
+
+Output:
+Shopping App: Flipkart
+
+
+
+
+
+Q-4: Build a small script that takes the user's full name as input and creates a username by copying only the first 5 characters using strcpy(). Print the generated username.<br><br><em><strong>Constraint:</strong> If the name is shorter than 5 characters, use the full name as the username.</em>
+Ans.
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char fullName[50];
+    char username[50];
+
+    // Take full name input
+    printf("Enter your full name: ");
+    scanf("%s", fullName);
+
+    // Check length of name
+    if (strlen(fullName) < 5) {
+        // Copy full name if length is less than 5
+        strcpy(username, fullName);
+    }
+    else {
+        // Copy first 5 characters
+        strncpy(username, fullName, 5);
+        username[5] = '\0';  // Add null character
+    }
+
+    // Print generated username
+    printf("Generated Username: %s", username);
+
+    return 0;
+}
+
+Output:
+Enter your full name: Krishna
+Generated Username: Krish
+
+
+
