@@ -101,3 +101,8 @@ My favorite Spotify playlist is 'My Favorite Hits' with 50 songs and the average
 
 4. Identify and correct the invalid variable names from this list: 1stPlayer, player_age, $score, total-marks, userName.<br><br><em><strong>Hint:</strong> Apply standard variable naming rules for your programming language.</em>
 Ans.
+1stPlayer: Invalid (cannot start with a digit)
+player_age: Valid
+$score: Invalid ($ is not allowed in standard C/C++)
+total-marks: Invalid (- is treated as the subtraction operator)
+userName: Valid
