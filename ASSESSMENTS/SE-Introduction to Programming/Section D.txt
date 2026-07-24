@@ -1,0 +1,188 @@
+AI-Augmented Learning
+STEP 1  ·  BUILD WITH AI
+Use an AI tool of your choice (ChatGPT, Claude, GitHub Copilot, etc.) to help you write a C program that:
+Accepts exactly 10 integers from the user using a loop and stores them in an array.
+Finds and displays the maximum value, minimum value, and arithmetic mean (displayed as a float with 2 decimal places).
+Sorts the array in ascending order using any sorting method and displays the sorted list.
+Prints whether the mean is closer to the minimum, closer to the maximum, or exactly midway between them.
+
+STEP 2  ·  TEST & DEBUG  (WITHOUT AI)
+Then, working without AI, test the code using boundary inputs: (a) all 10 values identical, (b) a mix of positive and negative integers, and (c) a list where the mean falls exactly between min and max. Find at least one bug, edge-case failure, or improvement in the AI's solution and fix it yourself.
+SUBMIT All 3 items required
+1 The exact prompt(s) you gave the AI tool.
+2 The AI's original code and your corrected version (submit both as separate .c files). 
+3 A 3–4 line note explaining what you changed and why the AI's original version needed the correction.
+
+Ans.
+STEP 1: BUILD WITH AI
+#include <stdio.h>
+
+int main()
+{
+    int arr[10];
+    int i, j, temp;
+    int max, min;
+    float sum = 0, mean;
+
+    printf("Enter 10 integers:\n");
+
+    for(i = 0; i < 10; i++)
+    {
+        scanf("%d", &arr[i]);
+        sum = sum + arr[i];
+    }
+
+    max = arr[0];
+    min = arr[0];
+
+    for(i = 1; i < 10; i++)
+    {
+        if(arr[i] > max)
+            max = arr[i];
+
+        if(arr[i] < min)
+            min = arr[i];
+    }
+
+    mean = sum / 10;
+
+    printf("\nMaximum = %d", max);
+    printf("\nMinimum = %d", min);
+    printf("\nMean = %.2f", mean);
+
+
+    // Bubble Sort
+    for(i = 0; i < 10; i++)
+    {
+        for(j = 0; j < 9; j++)
+        {
+            if(arr[j] > arr[j+1])
+            {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+
+    printf("\nSorted Array: ");
+
+    for(i = 0; i < 10; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+
+    // Mean comparison
+    if(mean - min < max - mean)
+        printf("\nMean is closer to minimum");
+
+    else if(max - mean < mean - min)
+        printf("\nMean is closer to maximum");
+
+    else
+        printf("\nMean is exactly midway between minimum and maximum");
+
+
+    return 0;
+}
+
+
+STEP 2: TEST & DEBUG WITHOUT AI
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[10];
+    int i, j, temp;
+    int max, min;
+    float sum = 0;
+    float mean;
+    float minDistance, maxDistance;
+
+
+    printf("Enter exactly 10 integers:\n");
+
+
+    // Input 10 numbers
+    for(i = 0; i < 10; i++)
+    {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+
+
+    // Find maximum and minimum
+    max = arr[0];
+    min = arr[0];
+
+    for(i = 1; i < 10; i++)
+    {
+        if(arr[i] > max)
+            max = arr[i];
+
+        if(arr[i] < min)
+            min = arr[i];
+    }
+
+
+    mean = sum / 10.0;
+
+
+    printf("\nMaximum = %d", max);
+    printf("\nMinimum = %d", min);
+    printf("\nMean = %.2f", mean);
+
+
+
+    // Bubble Sort
+    for(i = 0; i < 9; i++)
+    {
+        for(j = 0; j < 9-i; j++)
+        {
+            if(arr[j] > arr[j+1])
+            {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+
+    printf("\nSorted Array: ");
+
+    for(i = 0; i < 10; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+
+
+    // Correct mean comparison
+    minDistance = mean - min;
+    maxDistance = max - mean;
+
+
+    if(minDistance < maxDistance)
+    {
+        printf("\nMean is closer to minimum");
+    }
+    else if(maxDistance < minDistance)
+    {
+        printf("\nMean is closer to maximum");
+    }
+    else
+    {
+        printf("\nMean is exactly midway between minimum and maximum");
+    }
+
+
+    return 0;
+}
+
+I tested the AI-generated code with boundary inputs.
+I found that the mean comparison logic was not reliable for some cases.
+I fixed it by calculating separate distances from mean to minimum and maximum values.

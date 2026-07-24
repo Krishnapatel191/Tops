@@ -1,0 +1,74 @@
+SCENARIO 1: You are a junior developer at a fintech startup building a digital wallet app. The team is debating between Waterfall and Agile methodology. The project has frequently changing requirements and the client expects to review working features every two weeks.
+Question: Which development methodology would you recommend for this project, and why? Identify two specific risks the team would face if they chose the wrong methodology for this context.
+
+Ans.
+Agile Methodology is recommended because it allows the team to develop the project in small iterations, gather regular feedback, and quickly adapt to changing requirements. It improves collaboration between developers and stakeholders and helps deliver working software faster.
+
+Why Agile?
+
+Easy to handle changing requirements.
+Regular customer feedback improves the product.
+Faster delivery through small iterations (sprints).
+Problems are identified and fixed early.
+
+Two Risks of Choosing the Wrong Methodology:
+
+1. Changing requirements cannot be handled effectively.
+If a rigid methodology like Waterfall is used for a project with frequent changes, the team may need expensive rework, causing delays and increased costs.
+2. Poor product quality or customer dissatisfaction.
+If customer feedback is collected only at the end, the final product may not meet user expectations, leading to dissatisfaction and additional development effort.
+
+
+
+
+
+SCENARIO 2: You are collaborating on a college project website with three teammates. Just before a client demo, one teammate pushed incomplete code directly to the main branch, breaking the layout for everyone else on the team.
+Question: Describe the Git workflow your team should adopt to prevent this from happening again. Name at least two Git commands your team should use as part of this workflow and explain the role of each command.
+
+Ans.
+Git Workflow:
+The team should create a separate branch for each feature, commit changes regularly, pull the latest updates before merging, and merge code only after review. This helps avoid conflicts and keeps the main branch stable.
+
+Git Commands:
+
+1. git pull – Downloads and merges the latest changes from the remote repository before starting work.
+2. git merge – Combines changes from a feature branch into the main branch after testing.
+3. git commit – Saves changes with a meaningful message to track project history.
+
+
+
+
+
+SCENARIO 5: You are writing a C program to record daily rainfall data for a month (30 days). You need to store all 30 readings, calculate the monthly average, and then identify which specific days recorded rainfall above that average.
+Question: Explain why an array is the correct data structure for this task compared to using 30 separate variables. Describe the two-step logic your program would follow: first to compute the average, then to identify the above-average days — and explain why both steps cannot be done in a single loop.
+
+Ans.
+An array is the correct data structure because it stores all 30 values in one variable, making the program easier to manage and process with loops. Using 30 separate variables would make the code longer and harder to maintain.
+
+Program Logic:
+
+1. First step: Read all 30 values, calculate the total, and find the average.
+2. Second step: Traverse the array again and display the days whose values are greater than the average.
+
+Both steps cannot be done in a single loop because the average is known only after all 30 values have been read and the total has been calculated. Therefore, the program must calculate the average first and then compare each value with it.
+
+
+
+
+
+SCENARIO 6: You are debugging a C program that uses a pointer to traverse a string entered by the user. The program works correctly when the user types a name, but crashes immediately when the input field is left empty (the user just presses Enter).
+Question: Explain why the program crashes on an empty string input and describe the check your pointer-based solution must perform before dereferencing the pointer. How does traversing a string using a pointer differ from traversing it using array index notation, and which approach makes the empty-input bug easier to catch?
+
+Ans.
+
+The program crashes on an empty string because it tries to access a character even though the string contains only the null terminator ('\0'). Dereferencing the pointer without checking can cause invalid memory access.
+
+Before dereferencing the pointer, the program must check that the pointer is valid and that *ptr != '\0'. This ensures the pointer is pointing to a valid character before it is accessed.
+
+Difference between pointer traversal and array traversal:
+
+Pointer traversal: Uses a pointer (e.g., ptr++) to move from one character to the next.
+
+Array traversal: Uses an index (e.g., str[i]) to access each character in the string.
+
+The pointer-based approach makes the empty-input bug easier to catch because it directly checks for the null terminator ('\0') before dereferencing the pointer, preventing invalid access.
