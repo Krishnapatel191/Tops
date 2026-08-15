@@ -1,0 +1,211 @@
+TASKS:
+
+Q-1 : Create a class called Playlist with a default constructor that sets the playlist name to 'My Favourites' and prints a welcome message when an object is created.
+Ans.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Playlist {
+public:
+    string name;
+
+    Playlist() {
+        name = "My Favourites";
+        cout << "Welcome to your playlist!" << endl;
+    }
+};
+
+int main() {
+    Playlist p;
+
+    cout << "Playlist Name: " << p.name << endl;
+
+    return 0;
+}
+
+Output:
+Welcome to your playlist!
+Playlist Name: My Favourites
+
+
+
+
+
+Q-2 : Build a class Product for a Flipkart-style app with a parameterized constructor that takes productName, price, and rating as arguments and displays all details using a displayInfo() method.
+Ans.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Product {
+public:
+    string productName;
+    double price;
+    double rating;
+
+    Product(string name, double p, double r) {
+        productName = name;
+        price = p;
+        rating = r;
+    }
+
+    void displayInfo() {
+        cout << "Product Name: " << productName << endl;
+        cout << "Price: Rs. " << price << endl;
+        cout << "Rating: " << rating << "/5" << endl;
+    }
+};
+
+int main() {
+    Product p("iPhone 17", 79999, 4.5);
+
+    p.displayInfo();
+
+    return 0;
+}
+
+Output:
+Product Name: iPhone 17
+Price: Rs. 79999
+Rating: 4.5/5
+
+
+
+
+
+Q-3 : Create a class Movie with a parameterized constructor and then use a copy constructor to duplicate a Movie object. Print both the original and copied movie details to show they are identical.
+Ans.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Movie {
+public:
+    string title;
+    string director;
+    double rating;
+
+    Movie(string t, string d, double r) {
+        title = t;
+        director = d;
+        rating = r;
+    }
+
+    Movie(const Movie &m) {
+        title = m.title;
+        director = m.director;
+        rating = m.rating;
+    }
+
+    void displayInfo() {
+        cout << "Movie Title: " << title << endl;
+        cout << "Director: " << director << endl;
+        cout << "Rating: " << rating << "/10" << endl;
+    }
+};
+
+int main() {
+    Movie movie1("Avengers: Endgame", "Anthony Russo", 8.4);
+
+    Movie movie2(movie1);
+
+    cout << "Original Movie:" << endl;
+    movie1.displayInfo();
+
+    cout << "\nCopied Movie:" << endl;
+    movie2.displayInfo();
+
+    return 0;
+}
+
+Output:
+Original Movie:
+Movie Title: Avengers: Endgame
+Director: Anthony Russo
+Rating: 8.4/10
+
+Copied Movie:
+Movie Title: Avengers: Endgame
+Director: Anthony Russo
+Rating: 8.4/10
+
+
+
+
+
+Q-4 : Simulate a BookMyShow ticket booking by creating a Ticket class that prints 'Saving your ticket...' in its destructor. Create and delete a Ticket object to demonstrate the destructor lifecycle.<br><br><em><strong>Hint:</strong> Use the __del__ method (Python) or ~Ticket() (C++) to define the destructor.</em>
+Ans.
+#include <iostream>
+using namespace std;
+
+class Ticket {
+public:
+    Ticket() {
+        cout << "Ticket booked successfully!" << endl;
+    }
+
+    ~Ticket() {
+        cout << "Saving your ticket..." << endl;
+    }
+};
+
+int main() {
+    Ticket *ticket = new Ticket();
+
+    cout << "Ticket is active." << endl;
+
+    delete ticket;
+
+    return 0;
+}
+
+Output:
+Ticket booked successfully!
+Ticket is active.
+Saving your ticket...
+
+
+
+
+
+Q-5 : Modify your Playlist class so that it auto-saves the playlist name to a file called autosave.txt when the object is destroyed, simulating an auto-save feature like Spotify.<br><br><em><strong>Hint:</strong> Write the file-saving code inside the destructor.</em>
+Ans.
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+class Playlist {
+public:
+    string name;
+
+    Playlist(string playlistName) {
+        name = playlistName;
+    }
+
+    ~Playlist() {
+        ofstream file("autosave.txt");
+
+        if (file.is_open()) {
+            file << name;
+            file.close();
+
+            cout << "Playlist auto-saved successfully!" << endl;
+        } else {
+            cout << "Unable to save playlist." << endl;
+        }
+    }
+};
+
+int main() {
+    Playlist p("My Favourites");
+
+    cout << "Playlist Name: " << p.name << endl;
+
+    return 0;
+}
+
+Output:
+Playlist Name: My Favourites
+Playlist auto-saved successfully!
