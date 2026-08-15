@@ -1,0 +1,260 @@
+TASKS:
+
+Q-1 : Create a base class called SocialMediaUser with properties username and followers, and a method displayProfile() that prints the username and follower count.
+Ans.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class SocialMediaUser {
+public:
+    string username;
+    int followers;
+
+    void displayProfile() {
+        cout << "Username: " << username << endl;
+        cout << "Followers: " << followers << endl;
+    }
+};
+
+int main() {
+    SocialMediaUser user;
+
+    user.username = "Krishna";
+    user.followers = 1500;
+
+    user.displayProfile();
+
+    return 0;
+}
+
+Output:
+Username: Krishna
+Followers: 1500
+
+
+
+
+
+Q-2 : Build a YouTuber class that inherits from SocialMediaUser and adds a property channelName and a method uploadVideo(title) that prints 'Video [title] uploaded to [channelName]'.
+Ans.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class SocialMediaUser {
+public:
+    string username;
+    int followers;
+
+    void displayProfile() {
+        cout << "Username: " << username << endl;
+        cout << "Followers: " << followers << endl;
+    }
+};
+
+class YouTuber : public SocialMediaUser {
+public:
+    string channelName;
+
+    void uploadVideo(string title) {
+        cout << "Video " << title << " uploaded to " << channelName << endl;
+    }
+};
+
+int main() {
+    YouTuber user;
+
+    user.username = "Krishna";
+    user.followers = 1500;
+    user.channelName = "Krishna Tech";
+
+    user.displayProfile();
+
+    user.uploadVideo("C++ Tutorial");
+
+    return 0;
+}
+
+Output:
+Username: Krishna
+Followers: 1500
+Video C++ Tutorial uploaded to Krishna Tech
+
+
+
+
+
+Q-3 : Create a Podcaster class that also inherits from SocialMediaUser and adds a property podcastName and a method publishEpisode(episodeTitle) that prints 'Episode [episodeTitle] published on [podcastName]'.
+Ans.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class SocialMediaUser {
+public:
+    string username;
+    int followers;
+
+    void displayProfile() {
+        cout << "Username: " << username << endl;
+        cout << "Followers: " << followers << endl;
+    }
+};
+
+class Podcaster : public SocialMediaUser {
+public:
+    string podcastName;
+
+    void publishEpisode(string episodeTitle) {
+        cout << "Episode " << episodeTitle
+             << " published on " << podcastName << endl;
+    }
+};
+
+int main() {
+    Podcaster p;
+
+    p.username = "Krishna";
+    p.followers = 2000;
+    p.podcastName = "Tech Talks";
+
+    p.displayProfile();
+
+    p.publishEpisode("Introduction to C++");
+
+    return 0;
+}
+
+Output:
+Username: Krishna
+Followers: 2000
+Episode Introduction to C++ published on Tech Talks
+
+
+
+
+
+Q-4 : Demonstrate multilevel inheritance by creating a class GamingYouTuber that inherits from YouTuber and adds a method streamGame(gameName) which prints '[username] is now streaming [gameName] on [channelName]'.
+Ans.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class SocialMediaUser {
+public:
+    string username;
+    int followers;
+
+    void displayProfile() {
+        cout << "Username: " << username << endl;
+        cout << "Followers: " << followers << endl;
+    }
+};
+
+class YouTuber : public SocialMediaUser {
+public:
+    string channelName;
+
+    void uploadVideo(string title) {
+        cout << "Video " << title << " uploaded to "
+             << channelName << endl;
+    }
+};
+
+class GamingYouTuber : public YouTuber {
+public:
+    void streamGame(string gameName) {
+        cout << username << " is now streaming "
+             << gameName << " on " << channelName << endl;
+    }
+};
+
+int main() {
+    GamingYouTuber gamer;
+
+    gamer.username = "Krishna";
+    gamer.followers = 5000;
+    gamer.channelName = "Krishna Gaming";
+
+    gamer.displayProfile();
+
+    gamer.uploadVideo("Best Gaming Moments");
+
+    gamer.streamGame("GTA 5");
+
+    return 0;
+}
+
+Output:
+Username: Krishna
+Followers: 5000
+Video Best Gaming Moments uploaded to Krishna Gaming
+Krishna is now streaming GTA 5 on Krishna Gaming
+
+
+
+
+
+Q-5 : Implement hierarchical inheritance by creating an InstagramInfluencer class that inherits from SocialMediaUser and adds a method postStory(storyTitle) which prints '[username] posted a new story: [storyTitle]'.<br><br><em><strong>Hint:</strong> Think about how SocialMediaUser is the parent for YouTuber, Podcaster, and InstagramInfluencer.</em>
+Ans.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class SocialMediaUser {
+public:
+    string username;
+    int followers;
+
+    void displayProfile() {
+        cout << "Username: " << username << endl;
+        cout << "Followers: " << followers << endl;
+    }
+};
+
+class YouTuber : public SocialMediaUser {
+public:
+    string channelName;
+
+    void uploadVideo(string title) {
+        cout << "Video " << title << " uploaded to "
+             << channelName << endl;
+    }
+};
+
+class Podcaster : public SocialMediaUser {
+public:
+    string podcastName;
+
+    void publishEpisode(string episodeTitle) {
+        cout << "Episode " << episodeTitle
+             << " published on " << podcastName << endl;
+    }
+};
+
+class InstagramInfluencer : public SocialMediaUser {
+public:
+    void postStory(string storyTitle) {
+        cout << username << " posted a new story: "
+             << storyTitle << endl;
+    }
+};
+
+int main() {
+    InstagramInfluencer influencer;
+
+    influencer.username = "Krishna";
+    influencer.followers = 3000;
+
+    influencer.displayProfile();
+
+    influencer.postStory("My New Travel Story");
+
+    return 0;
+}
+
+Output:
+Username: Krishna
+Followers: 3000
+Krishna posted a new story: My New Travel Story
