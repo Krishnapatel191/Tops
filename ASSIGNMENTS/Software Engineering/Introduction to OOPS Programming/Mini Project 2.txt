@@ -1,0 +1,388 @@
+TASKS:
+
+Q-1 : Create a Content class with properties: title, platform, views, and status. Write a method to display all details of a Content object.
+Ans.
+#include <iostream>
+using namespace std;
+
+class Content
+{
+private:
+    string title;
+    string platform;
+    int views;
+    string status;
+
+public:
+    Content(string t, string p, int v, string s)
+    {
+        title = t;
+        platform = p;
+        views = v;
+        status = s;
+    }
+
+    void display()
+    {
+        cout << "Title: " << title << endl;
+        cout << "Platform: " << platform << endl;
+        cout << "Views: " << views << endl;
+        cout << "Status: " << status << endl;
+    }
+};
+
+int main()
+{
+    Content content("My First Video", "YouTube", 1500, "Published");
+
+    content.display();
+
+    return 0;
+}
+
+Output:
+Title: My First Video
+Platform: YouTube
+Views: 1500
+Status: Published
+
+
+
+
+
+Q-2 : Build a console menu that lets users add new content ideas (title, platform, views, status) and save each entry to a text file named content_list.txt.<br><br><em><strong>Hint:</strong> Use file handling to append each new content item to the file.</em>
+Ans.
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    int choice;
+
+    do
+    {
+        cout << "\n===== Content Menu =====" << endl;
+        cout << "1. Add Content" << endl;
+        cout << "2. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        cin.ignore();
+
+        if (choice == 1)
+        {
+            string title, platform, status;
+            int views;
+
+            cout << "Enter content title: ";
+            getline(cin, title);
+
+            cout << "Enter platform: ";
+            getline(cin, platform);
+
+            cout << "Enter views: ";
+            cin >> views;
+            cin.ignore();
+
+            cout << "Enter status: ";
+            getline(cin, status);
+
+            ofstream file("content_list.txt", ios::app);
+
+            file << "Title: " << title << endl;
+            file << "Platform: " << platform << endl;
+            file << "Views: " << views << endl;
+            file << "Status: " << status << endl;
+            file << "------------------------" << endl;
+
+            file.close();
+
+            cout << "Content saved successfully!" << endl;
+        }
+        else if (choice == 2)
+        {
+            cout << "Exiting..." << endl;
+        }
+        else
+        {
+            cout << "Invalid choice!" << endl;
+        }
+
+    } while (choice != 2);
+
+    return 0;
+}
+
+Output:
+===== Content Menu =====
+1. Add Content
+2. Exit
+Enter your choice: 1
+
+Enter content title: My First Reel
+Enter platform: Instagram
+Enter views: 2500
+Enter status: Published
+
+Content saved successfully!
+
+===== Content Menu =====
+1. Add Content
+2. Exit
+Enter your choice: 2
+
+Exiting...
+
+content_list.txt
+
+Title: My First Reel
+Platform: Instagram
+Views: 2500
+Status: Published
+
+
+
+
+
+
+Q-3 : Implement a function to read all content items from content_list.txt and display them in a numbered list, showing title and platform for each.
+Ans.
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    ifstream file("content_list.txt");
+
+    string title, platform, line;
+    int count = 1;
+
+    while (getline(file, line))
+    {
+        if (line.find("Title: ") == 0)
+            title = line.substr(7);
+
+        if (line.find("Platform: ") == 0)
+        {
+            platform = line.substr(10);
+
+            cout << count << ". "
+                 << title << " - "
+                 << platform << endl;
+
+            count++;
+        }
+    }
+
+    file.close();
+
+    return 0;
+}
+
+Output:
+1. My First Reel - Instagram
+2. Gaming Video - YouTube
+3. New Photo - Instagram
+
+
+
+
+
+Q-4 : Add an option in your console app to let users update the status of any content idea by selecting its number from the displayed list and saving the change back to the file.<br><br><em><strong>Hint:</strong> You will need to read all items, modify the selected one, and overwrite the file.</em>
+Ans.
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+struct Content
+{
+    string title, platform, status;
+    int views;
+};
+
+int main()
+{
+    vector<Content> list;
+    ifstream file("content_list.txt");
+
+    string line;
+    Content c;
+
+    while (getline(file, line))
+    {
+        if (line.find("Title: ") == 0)
+            c.title = line.substr(7);
+
+        else if (line.find("Platform: ") == 0)
+            c.platform = line.substr(10);
+
+        else if (line.find("Views: ") == 0)
+            c.views = stoi(line.substr(7));
+
+        else if (line.find("Status: ") == 0)
+        {
+            c.status = line.substr(8);
+            list.push_back(c);
+        }
+    }
+
+    file.close();
+
+    for (int i = 0; i < list.size(); i++)
+    {
+        cout << i + 1 << ". "
+             << list[i].title << " - "
+             << list[i].platform << " - "
+             << list[i].status << endl;
+    }
+
+    int choice;
+    string newStatus;
+
+    cout << "\nEnter content number to update: ";
+    cin >> choice;
+    cin.ignore();
+
+    cout << "Enter new status: ";
+    getline(cin, newStatus);
+
+    if (choice >= 1 && choice <= list.size())
+        list[choice - 1].status = newStatus;
+
+    ofstream out("content_list.txt");
+
+    for (auto c : list)
+    {
+        out << "Title: " << c.title << endl;
+        out << "Platform: " << c.platform << endl;
+        out << "Views: " << c.views << endl;
+        out << "Status: " << c.status << endl;
+        out << "------------------------" << endl;
+    }
+
+    out.close();
+
+    cout << "Status updated successfully!" << endl;
+
+    return 0;
+}
+
+Output: 
+1. My First Reel - Instagram - Draft
+2. Gaming Video - YouTube - Published
+3. New Photo - Instagram - Draft
+
+Enter content number to update: 1
+Enter new status: Published
+
+Status updated successfully!
+
+
+
+
+
+Q-5 : Add a feature to delete a content item by its number from the list, update the file accordingly, and display the updated list to confirm deletion.
+Ans.
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+struct Content
+{
+    string title, platform, status;
+    int views;
+};
+
+int main()
+{
+    vector<Content> list;
+    ifstream file("content_list.txt");
+
+    string line;
+    Content c;
+
+    while (getline(file, line))
+    {
+        if (line.find("Title: ") == 0)
+            c.title = line.substr(7);
+
+        else if (line.find("Platform: ") == 0)
+            c.platform = line.substr(10);
+
+        else if (line.find("Views: ") == 0)
+            c.views = stoi(line.substr(7));
+
+        else if (line.find("Status: ") == 0)
+        {
+            c.status = line.substr(8);
+            list.push_back(c);
+        }
+    }
+
+    file.close();
+
+    cout << "===== Content List =====" << endl;
+
+    for (int i = 0; i < list.size(); i++)
+    {
+        cout << i + 1 << ". "
+             << list[i].title << " - "
+             << list[i].platform << " - "
+             << list[i].status << endl;
+    }
+
+    int choice;
+    cout << "\nEnter content number to delete: ";
+    cin >> choice;
+
+    if (choice >= 1 && choice <= list.size())
+    {
+        list.erase(list.begin() + choice - 1);
+        cout << "Content deleted successfully!" << endl;
+    }
+    else
+    {
+        cout << "Invalid number!" << endl;
+        return 0;
+    }
+
+    ofstream out("content_list.txt");
+
+    for (auto c : list)
+    {
+        out << "Title: " << c.title << endl;
+        out << "Platform: " << c.platform << endl;
+        out << "Views: " << c.views << endl;
+        out << "Status: " << c.status << endl;
+        out << "------------------------" << endl;
+    }
+
+    out.close();
+
+    cout << "\n===== Updated List =====" << endl;
+
+    for (int i = 0; i < list.size(); i++)
+    {
+        cout << i + 1 << ". "
+             << list[i].title << " - "
+             << list[i].platform << endl;
+    }
+
+    return 0;
+}
+
+Output:
+===== Content List =====
+1. My First Reel - Instagram - Published
+2. Gaming Video - YouTube - Published
+3. New Photo - Instagram - Draft
+
+Enter content number to delete: 2
+Content deleted successfully!
+
+===== Updated List =====
+1. My First Reel - Instagram
+2. New Photo - Instagram
